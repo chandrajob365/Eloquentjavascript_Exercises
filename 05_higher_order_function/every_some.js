@@ -17,7 +17,8 @@ var res = some([12,130,44,8]);
 console.log("result --> " + res);
 
 //===================Every===============================
-console.log("===================Every===============================");
+
+console.log("===================Every=================================");
 function every(array){
   for(var i=0 ; i< array.length ; i++){
     if(!chkPoint(array[i])){
