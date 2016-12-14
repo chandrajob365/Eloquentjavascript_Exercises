@@ -20,6 +20,12 @@ var dataArr = [
 var headers = Object.keys(dataArr[0]);
 
 function groupOfHeaders(dataArr){
+
+//Getting values for headers
+var headers = Object.keys(dataArr[0]); // As key will be same in each object , so to get header value just taking it from first object
+
+// Grouping all the values in array of array format from Array of Object
+function arrayOfArraysFromArrayOfObjects(dataArr){
   return dataArr.map(function(element , index){
     var tempArr =[];
       for(var prop in element){
@@ -33,6 +39,12 @@ var arrayOfArraysFromArrayOfObjects = groupOfHeaders(dataArr);
 var tempMaxSizeArr =[];
 var maxSizeArr = maxValue(arrayOfArraysFromArrayOfObjects);
 
+var arrayOfArraysFromArrayOfObjects = arrayOfArraysFromArrayOfObjects(dataArr);
+
+var tempMaxSizeArr =[];
+var maxSizeArr = maxValue(arrayOfArraysFromArrayOfObjects);
+
+// Getting array of max sizes for each type of key(eg: max length from all mountain names  i.e Kilimanjaro = 11) in array of array
 function maxValue(arr){
   var rows = arr.length;
   var cols = arr[0].length;
@@ -50,6 +62,7 @@ function maxValue(arr){
 }
 
 
+// creating Header with spaces so that it can define column length
 function headerWithAppropriateSpaces(headers){
   return headers.map(function(element,index){
     return maxSizeArr[index]>element.length?element.concat(' '.repeat(maxSizeArr[index]-element.length+2)):element.concat(' '.repeat(2));
@@ -57,6 +70,10 @@ function headerWithAppropriateSpaces(headers){
 }
 
 var newHeadersWithSpaces = headerWithAppropriateSpaces(headers);
+
+
+// creating second row of dotted lines with two extra spaces for gap between two columns
+
 function dottedLinesForSecondRow(maxSizeArr){
   var dottedArr =[];
   for(var i =0 ; i< maxSizeArr.length ; i++){
@@ -85,6 +102,8 @@ function displayHalf(arr){
 //Display of header and dotted Functions END
 
 var combinedArr =[];
+
+// arranging all the values to fit in column length
 function arrangeData(dataArr){
   for(var i = 0 ; i<dataArr.length; i++){
     var temp ='';
